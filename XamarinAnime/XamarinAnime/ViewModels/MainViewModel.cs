@@ -37,7 +37,6 @@ namespace XamarinAnime.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
         public async Task GetAnime()
         {
             try
@@ -56,7 +55,7 @@ namespace XamarinAnime.ViewModels
                         slug = item.attributes.slug,
                         canonicalTitle = item.attributes.canonicalTitle,
                         en = item.attributes.titles.en,
-                        original = item.attributes.posterImage.original,
+                        original = item.attributes.posterImage.medium,
                         description = item.attributes.description,
                         averageRating = item.attributes.averageRating,
                         startDate = item.attributes.startDate,
