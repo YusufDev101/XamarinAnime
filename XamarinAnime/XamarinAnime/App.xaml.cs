@@ -16,8 +16,9 @@ namespace XamarinAnime
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
 
+            HttpWebRequest = new HttpWebRequest();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

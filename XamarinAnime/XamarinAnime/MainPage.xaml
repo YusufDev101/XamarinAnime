@@ -9,28 +9,38 @@
             <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
 
-        <ListView x:Name="EmployeeView"
+        <!--margin
+            1 for Left
+            2 for Top
+            3 for Right
+            4 for Bottom-->
+
+        <!--<CollectionView  x:Name="EmployeeView"
             ItemsSource="{Binding Employees}">
-            <ListView.ItemTemplate>
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            
-                    <Frame
-                            Margin="0, 0, 0, 0"
-                            HeightRequest="50"
-                            WidthRequest="200"
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame
+                            Margin="10, 0, 10, 0"
                             Padding="0"
+                            HeightRequest="150"
                             BackgroundColor="#1f1f1f"
                             CornerRadius="10">
-                                <Label  Text="{Binding DisplayName}"  TextColor="Black"/>
-                            </Frame>
-                    </StackLayout>
+                            <Label  Text="{Binding DisplayName}"  TextColor="White"/>
+                        </Frame>
+                    </Grid>
+                    
 
-                        </ViewCell>
+                            --><!--</StackLayout>--><!--
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
 
     </StackLayout>
 

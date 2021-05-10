@@ -6,34 +6,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XamarinAnime.ViewModels;
 
 namespace XamarinAnime
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
-        public ObservableCollection<Employee> Employees { get { return employees; } }
+        private MainViewModel mainViewModel;
 
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();            
+            
+            mainViewModel = new MainViewModel();
+            BindingContext = mainViewModel;
 
-            // ObservableCollection allows items to be added after ItemsSource
-            // is set and the UI will react to changes
-            employees.Add(new Employee { DisplayName = "Rob Finnerty" });
-            employees.Add(new Employee { DisplayName = "Bill Wrestler" });
-            employees.Add(new Employee { DisplayName = "Dr. Geri-Beth Hooper" });
-            employees.Add(new Employee { DisplayName = "Dr. Keith Joyce-Purdy" });
-            employees.Add(new Employee { DisplayName = "Sheri Spruce" });
-            employees.Add(new Employee { DisplayName = "Burt Indybrick" });
+            DataObject();
 
-            EmployeeView.ItemsSource = employees;
+        }   
 
-        }
-
-        public class Employee
+        private async void DataObject()
         {
-            public string DisplayName { get; set; }
+            try
+            {
+                await mainViewModel.GetAnime();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+            }
         }
     }
 }
