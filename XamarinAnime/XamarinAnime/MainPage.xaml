@@ -4,11 +4,31 @@
              BackgroundColor="#121212"
              x:Class="XamarinAnime.MainPage">
 
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#121212" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+
     <StackLayout>
 
         <Frame BackgroundColor="#1f1f1f" Padding="24" CornerRadius="0" HeightRequest="100">
             <StackLayout>
                 <Label Text="Xamarin Anime" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+                <Label Text="Top 20 Popular Anime" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
             </StackLayout>
         </Frame>
 
@@ -18,13 +38,16 @@
             3 for Right
             4 for Bottom-->
 
-        <CollectionView  ItemsSource="{Binding AnimeCollectionObject}" Margin="10,10,10,10">
+        <CollectionView  ItemsSource="{Binding AnimeCollectionObject}" 
+                         Margin="10,0,10,10"
+                          SelectionMode="Single"
+                         SelectionChanged="CollectionView_SelectionChanged">
             <CollectionView.Header>
                 <SearchBar Grid.Row="0"
                            Placeholder="Search Here"
-                           PlaceholderColor="#1f1f1f"
+                           PlaceholderColor="DimGray"
                            CancelButtonColor="Red"
-                           TextColor="Black"
+                           TextColor="WhiteSmoke"
                            TextTransform="Lowercase"
                            HorizontalTextAlignment="Start" />
             </CollectionView.Header>
@@ -55,10 +78,10 @@
                                    VerticalTextAlignment="Center"
                                    MaxLines="1"
                                    LineBreakMode="TailTruncation"
-                                   TextColor="DarkGray" 
-                                   FontSize="20" 
+                                   TextColor="WhiteSmoke" 
+                                   FontSize="15" 
                                    Margin="0, 10, 0, 10"/>
-                                <Image Source="{Binding original}" Aspect="AspectFill" WidthRequest="100" HeightRequest="200"></Image>
+                                <Image Source="{Binding original}" Aspect="AspectFill" WidthRequest="100" HeightRequest="200"/>
                             </StackLayout>
                         </Frame>
                     </Grid>                   

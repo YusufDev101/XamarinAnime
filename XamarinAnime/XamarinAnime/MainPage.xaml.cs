@@ -36,5 +36,17 @@ namespace XamarinAnime
                 await DisplayAlert("Error", ex.Message, "OK");
             }
         }
+
+        private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                await DisplayAlert("Hello", "Hello", "OK");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
