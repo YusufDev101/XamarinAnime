@@ -32,16 +32,39 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
-            <Label Text="Anime Stuff" TextColor="red" Grid.Column="0" Grid.Row="0"  Margin="10,15,0,0"/>
-            <Label Text="ico" TextColor="red" Grid.Column="2" Grid.Row="0"  Margin="75,15,0,0"/>
-            <Label Text="ico" TextColor="red" Grid.Column="3" Grid.Row="0"  Margin="10,15,0,0"/>
+            <Label Text="Anime Stuff" TextColor="red" Grid.Column="0" Grid.Row="0" Margin="10,15,0,0"/>
+            <Label Text="ico" TextColor="red" Grid.Column="2" Grid.Row="0" Margin="75,15,0,0"/>
+            <Label Text="ico" TextColor="red" Grid.Column="3" Grid.Row="0" Margin="10,15,0,0"/>
         </Grid>
 
-        <CarouselView ItemsSource="{Binding AnimeCollectionObject}">
+        <CarouselView ItemsSource="{Binding AnimeCollectionObject}" PeekAreaInsets="40">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Margin="60,30,60,30" BackgroundColor="Transparent">
-                        
+                    <StackLayout Margin="30,30,30,30" BackgroundColor="Transparent">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="CurrentItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                        Value="1.0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="PreviousItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.5" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="NextItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.5" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                              
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
                         <Frame
                             BackgroundColor="Transparent"
                             BorderColor="WhiteSmoke"
@@ -51,7 +74,7 @@
                             HorizontalOptions="Start"
                             VerticalOptions="Start">
                             <RelativeLayout BackgroundColor="#E2E2E2" HeightRequest="210">
-                                <Image Source="{Binding original}"  Aspect="AspectFill"    WidthRequest="350" 
+                                <Image Source="{Binding original}"  Aspect="AspectFill" WidthRequest="300" 
                                     HeightRequest="210"
                                     HorizontalOptions="Center" />
                                 <StackLayout BackgroundColor="#E2E2E2" TranslationY="165" Opacity=".6" Padding="10,5,10,5" MinimumWidthRequest="100">
@@ -65,10 +88,23 @@
             </CarouselView.ItemTemplate>
         </CarouselView>
 
+        <Label Text="Xamarin Anime" HorizontalTextAlignment="Start" VerticalTextAlignment="End" TextColor="White" FontSize="20"  Margin="20,0,0,0"/>
+
+        <Grid Padding="0" Margin="0,0,0,0" VerticalOptions="End">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Anime Stuff" TextColor="red" Grid.Column="1" Grid.Row="0" Margin="10,10,0,0"/>
+            <Label Text="Anime Stuff" TextColor="red" Grid.Column="2" Grid.Row="0" Margin="10,10,0,0"/>
+            <Label Text="Anime Stuff " TextColor="red" Grid.Column="3" Grid.Row="0" Margin="10,10,0,0"/>
+        </Grid>
 
         <!--<Frame BackgroundColor="#1f1f1f" Padding="24" CornerRadius="0" HeightRequest="100">
             <StackLayout>
-                <Label Text="Xamarin Anime" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+             
                 <Label Text="Top 20 Popular Anime" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
             </StackLayout>
         </Frame>-->
@@ -83,35 +119,47 @@
                          Margin="10,0,10,10"
                           SelectionMode="Single"
                          ItemsLayout="HorizontalList" 
+                         VerticalOptions="End"
                          SelectionChanged="CollectionView_SelectionChanged">
          
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+                    
                     <Grid Padding="0" Margin="10,0,0,0">
+                        
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="150" />
+                            <RowDefinition Height="100" />
                         </Grid.RowDefinitions>
+                        
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
-                        <Frame
-                            Margin="0, 0, 10, 0"
-                            Padding="0"
-                            HeightRequest="200"
-                            BackgroundColor="#1f1f1f"
-                            CornerRadius="10">
-                            <StackLayout>
-                            <Image Source="{Binding original}" Aspect="AspectFill" WidthRequest="50" HeightRequest="110"/>
+
+                        <StackLayout>
+                            <Frame
+                                Margin="0, 0, 10, 0"
+                                Padding="0"
+                                HeightRequest="200"
+                                BackgroundColor="Transparent"
+                                CornerRadius="10">
+
+                                <Image Source="{Binding original}" 
+                                        Aspect="AspectFill" 
+                                        WidthRequest="130" 
+                                        HeightRequest="200"/>
+
+                            </Frame>
+
                             <Label Text="{Binding en}"  
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"
-                                   MaxLines="1"
-                                   LineBreakMode="TailTruncation"
-                                   TextColor="WhiteSmoke" 
-                                   FontSize="15" 
-                                   Margin="0, 10, 0, 10"/>
-                            </StackLayout>
-                        </Frame>
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                MaxLines="1"
+                                LineBreakMode="TailTruncation"
+                                TextColor="WhiteSmoke" 
+                                FontSize="10" 
+                                Margin="0, 10, 0, 10"/>
+
+                        </StackLayout>
                     </Grid>                   
                 </DataTemplate>
             </CollectionView.ItemTemplate>
