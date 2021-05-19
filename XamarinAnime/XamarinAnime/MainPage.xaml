@@ -22,7 +22,6 @@
         </Style>
     </ContentPage.Resources>
 
-
     <StackLayout>
 
         <Grid Padding="0" Margin="10,0,0,0">
@@ -33,8 +32,8 @@
                 <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
             <Label Text="Anime Stuff" TextColor="red" Grid.Column="0" Grid.Row="0" Margin="10,15,0,0"/>
-            <Label Text="ico" TextColor="red" Grid.Column="2" Grid.Row="0" Margin="75,15,0,0"/>
-            <Label Text="ico" TextColor="red" Grid.Column="3" Grid.Row="0" Margin="10,15,0,0"/>
+            <Label Text="icon" TextColor="red" Grid.Column="2" Grid.Row="0" Margin="75,15,0,0"/>
+            <Label Text="icon" TextColor="red" Grid.Column="3" Grid.Row="0" Margin="10,15,0,0"/>
         </Grid>
 
         <CarouselView ItemsSource="{Binding AnimeCollectionObject}" PeekAreaInsets="40">
@@ -136,6 +135,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout>
+                            
                             <Frame
                                 Margin="0, 0, 10, 0"
                                 Padding="0"
@@ -143,9 +143,9 @@
                                 BackgroundColor="Transparent"
                                 CornerRadius="10">
 
-                                <Image Source="{Binding original}" 
-                                        Aspect="AspectFill" 
-                                        WidthRequest="130" 
+                                <Image Source="{Binding original}"
+                                        Aspect="AspectFill"
+                                        WidthRequest="130"
                                         HeightRequest="200"/>
 
                             </Frame>
